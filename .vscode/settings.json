@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    ".build": false,
+    ".sst": false,
+    "**/.cache": false,
+    "**/build": false,
+    "**/node_modules": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "@rekt/root",
+  "description": "The ReKt stack",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "db:gen-types": "node scripts/db-gen-types.mjs",
+    "db:seed": "node scripts/db-seed.mjs",
+    "db:seed:production": "STAGE=production node scripts/db-seed.mjs",
+    "dev:services": "sst start",
+    "dev:web": "yarn workspace @rekt/web dev",
+    "deploy:production": "sst deploy --stage production",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "yarn lint --fix"
+  },
+  "devDependencies": {
+    "@remix-run/eslint-config": "^1.7.2",
+    "@serverless-stack/cli": "1.15.8",
+    "@serverless-stack/resources": "1.15.8",
+    "@tsconfig/node16": "^1.0.3",
+    "aws-cdk-lib": "2.39.1",
+    "eslint": "^8.24.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "kysely-codegen": "^0.6.2",
+    "mysql2": "^2.3.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "typescript": "^4.8.3"
+  },
+  "workspaces": [
+    "services",
+    "web"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@remix-run/eslint-config",
+      "@remix-run/eslint-config/node"
+    ],
+    "plugins": [
+      "simple-import-sort"
+    ],
+    "rules": {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    }
+  },
+  "prettier": {
+    "tailwindConfig": "./web/tailwind.config.js"
+  }
+}
